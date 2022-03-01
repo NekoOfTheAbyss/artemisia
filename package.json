@@ -1,0 +1,10 @@
+{
+	"type": "module",
+	"dependencies": {
+		"@nekooftheabyss/lala": "^2.1.0",
+		"canvas": "^2.9.0",
+		"eris": "^0.16.1",
+		"node-fetch": "^3.2.1",
+		"quick.db": "^7.1.3"
+	}
+}
