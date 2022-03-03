@@ -10,6 +10,8 @@ import Color from "../util/Color.js";
 import Embed from "../util/Embed.js";
 import AddCommas from "../util/AddCommas.js";
 import EscapeRegex from "../util/EscapeRegex.js";
+import ParseUser from "../util/ParseUser.js";
+import Extra from "../util/Extra.js";
 
 class Client extends ErisClient {
   constructor(token, options) {
@@ -20,6 +22,8 @@ class Client extends ErisClient {
       Embed,
       AddCommas,
       EscapeRegex,
+      ParseUser,
+      Extra,
     };
     this.commandPrefix = options.commandPrefix;
     this.owner = options.owner;

@@ -5,6 +5,7 @@ class Command {
       this.name = data.name;
       this.description = data.description || "";
       this.group = data.group;
+      this.bossCommand = data.bossCommand || false;
       this.nsfw = data.nsfw ? true : false;
       this.textOnly = new Boolean(data.textOnly);
       this.options = data.options;

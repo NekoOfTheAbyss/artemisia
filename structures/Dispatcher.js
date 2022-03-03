@@ -35,15 +35,20 @@ class Dispatcher {
         const matches = this.cmdPattern.exec(message.content)
         const cmd = this.client.registry.commands.get(matches[2])
         if(!cmd) return false;
+        if(cmd.bossCommand && message.author.id !== this.client.owner) {
+            console.log("aaaaaaaa")
+            console.log(this.client.owner)
+            return false
+        }
         const data = {
             name: cmd.name,
             options: null,
         }
         if(Array.isArray(cmd.options) && cmd.options.length > 0) {
             data.options = []
-            const args = message.content.replace(`${matches[0]} `, "").replace(`${matches[0]}`, "").split(" ")
-            console.log(matches)
-            console.log(args)
+            let args = message.content.replace(`${matches[0]} `, "").replace(`${matches[0]}`, "")
+            if(cmd.options.length > 1) args = args.split(" ")
+            else args = [args]
             cmd.options.forEach((x, i) => {
                 if(args[i] && args[i].length > 0) data.options.push({name: x.name, value: this.parseArgs(args[i], x.type)})
             })
