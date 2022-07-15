@@ -7,12 +7,12 @@ export default async (client, guild, member) => {
 
     client.createMessage(
       "853275259759230986",
-      `<@${member.id}> has joined the server.\nTake a look at <#857231833132302356> before you start chatting!`,
+      `<@${member.id}> has joined the server.\nTake a look at <#996725156317769801> before you start chatting!`,
       attachment
     );
     client.createMessage(
       "811992214237872139",
-      `Welcome to **Kuro's Abyss**, <@${member.id}>!`
+      `Welcome to **Kuro's Chaos Abyss**, <@${member.id}>!`
     );
   }
 

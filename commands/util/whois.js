@@ -1,5 +1,4 @@
 import Command from "../../structures/Command.js";
-
 export default class WhoIsCommand extends Command {
   constructor(client) {
     super(client, {
@@ -24,9 +23,13 @@ export default class WhoIsCommand extends Command {
     const embed = new this.client.util.Embed()
       .setAuthor(`${user.username}#${user.discriminator}`, user.avatarURL)
       .addField("Bot?", user.bot ? "Yes" : "No", true)
-      .addField("In this guild?", member ? "Yes" : "No", true)
+      .addField("In this guild?", member[0] ? "Yes" : "No", true)
       .setColor("#ff00c3")
       .setImage(user.avatarURL);
+
+      if(member[0] && member[1]) {
+        embed.addField("Joined", new Date(member[1]?.joinedAt).toISOString().substring(0, 10))
+      }
 
     return message.createMessage({ embeds: [embed.json()] });
   }
@@ -35,10 +38,10 @@ export default class WhoIsCommand extends Command {
 async function exists(id, guild) {
   try {
     const member = await guild.getRESTMember(id);
-    if (member) return true;
-    return false;
+    if (member) return [true, member];
+    return [false, null];
   } catch (e) {
     console.error(e);
-    return false;
+    return [false, null];
   }
 }
